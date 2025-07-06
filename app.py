@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, render_template
 import xml.etree.ElementTree as ET
 import os
 
@@ -121,121 +121,9 @@ class PMMLTreeClassifier:
 # Carregar o modelo PMML
 model = PMMLTreeClassifier('paste.txt')  # Assumindo que o arquivo PMML está salvo como paste.txt
 
-# Template HTML
-HTML_TEMPLATE = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Classificador de Doença Cardíaca</title>
-    <meta charset="UTF-8">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
-        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
-        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
-        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🫀 Classificador de Doença Cardíaca</h1>
-        <p>Preencha os dados abaixo para avaliar o risco de doença cardíaca:</p>
-        
-        <form id="heartForm">
-            <div class="form-group">
-                <label for="age">Idade (29-77 anos):</label>
-                <input type="number" id="age" name="age" min="29" max="77" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="sex">Sexo:</label>
-                <select id="sex" name="sex" required>
-                    <option value="">Selecione...</option>
-                    <option value="0">Feminino</option>
-                    <option value="1">Masculino</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="cp">Tipo de dor no peito:</label>
-                <select id="cp" name="cp" required>
-                    <option value="">Selecione...</option>
-                    <option value="0">Angina típica</option>
-                    <option value="1">Angina atípica</option>
-                    <option value="2">Dor não-anginosa</option>
-                    <option value="3">Assintomático</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="trestbps">Pressão arterial em repouso (94-200 mmHg):</label>
-                <input type="number" id="trestbps" name="trestbps" min="94" max="200" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="thalach">Frequência cardíaca máxima (71-202 bpm):</label>
-                <input type="number" id="thalach" name="thalach" min="71" max="202" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="exang">Angina induzida por exercício:</label>
-                <select id="exang" name="exang" required>
-                    <option value="">Selecione...</option>
-                    <option value="0">Não</option>
-                    <option value="1">Sim</option>
-                </select>
-            </div>
-            
-            <button type="submit">Classificar</button>
-        </form>
-        
-        <div id="result"></div>
-    </div>
-    
-    <script>
-        document.getElementById('heartForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Converter para números
-            for (let key in data) {
-                if (key !== 'target') {
-                    data[key] = parseFloat(data[key]);
-                }
-            }
-            
-            fetch('/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerHTML = data.html;
-            })
-            .catch(error => {
-                document.getElementById('result').innerHTML = 
-                    '<div class="result error">Erro ao processar a solicitação: ' + error + '</div>';
-            });
-        });
-    </script>
-</body>
-</html>
-"""
-
 @app.route('/')
 def index():
-    return render_template_string(HTML_TEMPLATE)
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
