@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="natsa">
+    <Application name="KNIME" version="5.4.3"/>
+  </Header>
+  <DataDictionary numberOfFields="11">
+    <DataField name="age" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="sex" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="cp" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="trestbps" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="chol" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="fbs" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="restecg" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="thalach" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="exang" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="oldpeak" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="target" optype="categorical" dataType="string">
+      <Value value="No"/>
+      <Value value="Yes"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="age" invalidValueTreatment="asIs"/>
+      <MiningField name="sex" invalidValueTreatment="asIs"/>
+      <MiningField name="cp" invalidValueTreatment="asIs"/>
+      <MiningField name="trestbps" invalidValueTreatment="asIs"/>
+      <MiningField name="chol" invalidValueTreatment="asIs"/>
+      <MiningField name="fbs" invalidValueTreatment="asIs"/>
+      <MiningField name="restecg" invalidValueTreatment="asIs"/>
+      <MiningField name="thalach" invalidValueTreatment="asIs"/>
+      <MiningField name="exang" invalidValueTreatment="asIs"/>
+      <MiningField name="oldpeak" invalidValueTreatment="asIs"/>
+      <MiningField name="target" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="Yes" recordCount="923.0">
+      <True/>
+      <ScoreDistribution value="No" recordCount="450.0"/>
+      <ScoreDistribution value="Yes" recordCount="473.0"/>
+      <Node id="1" score="No" recordCount="445.0">
+        <SimplePredicate field="cp" operator="lessOrEqual" value="0.16666666666666666"/>
+        <ScoreDistribution value="No" recordCount="335.0"/>
+        <ScoreDistribution value="Yes" recordCount="110.0"/>
+        <Node id="2" score="Yes" recordCount="154.0">
+          <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.11290322580645161"/>
+          <ScoreDistribution value="No" recordCount="76.0"/>
+          <ScoreDistribution value="Yes" recordCount="78.0"/>
+          <Node id="3" score="Yes" recordCount="49.0">
+            <SimplePredicate field="sex" operator="lessOrEqual" value="0.5"/>
+            <ScoreDistribution value="No" recordCount="11.0"/>
+            <ScoreDistribution value="Yes" recordCount="38.0"/>
+            <Node id="4" score="Yes" recordCount="40.0">
+              <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.42452830188679247"/>
+              <ScoreDistribution value="No" recordCount="5.0"/>
+              <ScoreDistribution value="Yes" recordCount="35.0"/>
+              <Node id="5" score="Yes" recordCount="38.0">
+                <SimplePredicate field="thalach" operator="lessOrEqual" value="0.7251908396946565"/>
+                <ScoreDistribution value="No" recordCount="3.0"/>
+                <ScoreDistribution value="Yes" recordCount="35.0"/>
+                <Node id="6" score="No" recordCount="6.0">
+                  <SimplePredicate field="chol" operator="lessOrEqual" value="0.17579908675799083"/>
+                  <ScoreDistribution value="No" recordCount="3.0"/>
+                  <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  <Node id="7" score="No" recordCount="3.0">
+                    <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.04838709677419355"/>
+                    <ScoreDistribution value="No" recordCount="3.0"/>
+                    <ScoreDistribution value="Yes" recordCount="0.0"/>
+                  </Node>
+                  <Node id="8" score="Yes" recordCount="3.0">
+                    <SimplePredicate field="oldpeak" operator="greaterThan" value="0.04838709677419355"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  </Node>
+                </Node>
+                <Node id="9" score="Yes" recordCount="32.0">
+                  <SimplePredicate field="chol" operator="greaterThan" value="0.17579908675799083"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="32.0"/>
+                </Node>
+              </Node>
+              <Node id="10" score="No" recordCount="2.0">
+                <SimplePredicate field="thalach" operator="greaterThan" value="0.7251908396946565"/>
+                <ScoreDistribution value="No" recordCount="2.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="11" score="No" recordCount="9.0">
+              <SimplePredicate field="trestbps" operator="greaterThan" value="0.42452830188679247"/>
+              <ScoreDistribution value="No" recordCount="6.0"/>
+              <ScoreDistribution value="Yes" recordCount="3.0"/>
+              <Node id="12" score="No" recordCount="6.0">
+                <SimplePredicate field="thalach" operator="lessOrEqual" value="0.5916030534351144"/>
+                <ScoreDistribution value="No" recordCount="6.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+              <Node id="13" score="Yes" recordCount="3.0">
+                <SimplePredicate field="thalach" operator="greaterThan" value="0.5916030534351144"/>
+                <ScoreDistribution value="No" recordCount="0.0"/>
+                <ScoreDistribution value="Yes" recordCount="3.0"/>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="14" score="No" recordCount="105.0">
+            <SimplePredicate field="sex" operator="greaterThan" value="0.5"/>
+            <ScoreDistribution value="No" recordCount="65.0"/>
+            <ScoreDistribution value="Yes" recordCount="40.0"/>
+            <Node id="15" score="No" recordCount="94.0">
+              <SimplePredicate field="thalach" operator="lessOrEqual" value="0.8435114503816793"/>
+              <ScoreDistribution value="No" recordCount="65.0"/>
+              <ScoreDistribution value="Yes" recordCount="29.0"/>
+              <Node id="16" score="No" recordCount="49.0">
+                <SimplePredicate field="restecg" operator="lessOrEqual" value="0.25"/>
+                <ScoreDistribution value="No" recordCount="43.0"/>
+                <ScoreDistribution value="Yes" recordCount="6.0"/>
+                <Node id="17" score="No" recordCount="7.0">
+                  <SimplePredicate field="thalach" operator="lessOrEqual" value="0.3091603053435114"/>
+                  <ScoreDistribution value="No" recordCount="4.0"/>
+                  <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  <Node id="18" score="No" recordCount="4.0">
+                    <SimplePredicate field="thalach" operator="lessOrEqual" value="0.2938931297709923"/>
+                    <ScoreDistribution value="No" recordCount="4.0"/>
+                    <ScoreDistribution value="Yes" recordCount="0.0"/>
+                  </Node>
+                  <Node id="19" score="Yes" recordCount="3.0">
+                    <SimplePredicate field="thalach" operator="greaterThan" value="0.2938931297709923"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  </Node>
+                </Node>
+                <Node id="20" score="No" recordCount="42.0">
+                  <SimplePredicate field="thalach" operator="greaterThan" value="0.3091603053435114"/>
+                  <ScoreDistribution value="No" recordCount="39.0"/>
+                  <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  <Node id="21" score="No" recordCount="33.0">
+                    <SimplePredicate field="chol" operator="lessOrEqual" value="0.3995433789954338"/>
+                    <ScoreDistribution value="No" recordCount="33.0"/>
+                    <ScoreDistribution value="Yes" recordCount="0.0"/>
+                  </Node>
+                  <Node id="22" score="No" recordCount="9.0">
+                    <SimplePredicate field="chol" operator="greaterThan" value="0.3995433789954338"/>
+                    <ScoreDistribution value="No" recordCount="6.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                    <Node id="23" score="No" recordCount="6.0">
+                      <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.03225806451612903"/>
+                      <ScoreDistribution value="No" recordCount="6.0"/>
+                      <ScoreDistribution value="Yes" recordCount="0.0"/>
+                    </Node>
+                    <Node id="24" score="Yes" recordCount="3.0">
+                      <SimplePredicate field="oldpeak" operator="greaterThan" value="0.03225806451612903"/>
+                      <ScoreDistribution value="No" recordCount="0.0"/>
+                      <ScoreDistribution value="Yes" recordCount="3.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="25" score="Yes" recordCount="45.0">
+                <SimplePredicate field="restecg" operator="greaterThan" value="0.25"/>
+                <ScoreDistribution value="No" recordCount="22.0"/>
+                <ScoreDistribution value="Yes" recordCount="23.0"/>
+                <Node id="26" score="Yes" recordCount="14.0">
+                  <SimplePredicate field="thalach" operator="lessOrEqual" value="0.6183206106870228"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="14.0"/>
+                </Node>
+                <Node id="27" score="No" recordCount="31.0">
+                  <SimplePredicate field="thalach" operator="greaterThan" value="0.6183206106870228"/>
+                  <ScoreDistribution value="No" recordCount="22.0"/>
+                  <ScoreDistribution value="Yes" recordCount="9.0"/>
+                  <Node id="28" score="No" recordCount="28.0">
+                    <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.056451612903225805"/>
+                    <ScoreDistribution value="No" recordCount="22.0"/>
+                    <ScoreDistribution value="Yes" recordCount="6.0"/>
+                    <Node id="29" score="Yes" recordCount="8.0">
+                      <SimplePredicate field="age" operator="lessOrEqual" value="0.38541666666666663"/>
+                      <ScoreDistribution value="No" recordCount="3.0"/>
+                      <ScoreDistribution value="Yes" recordCount="5.0"/>
+                      <Node id="30" score="Yes" recordCount="5.0">
+                        <SimplePredicate field="thalach" operator="lessOrEqual" value="0.8282442748091603"/>
+                        <ScoreDistribution value="No" recordCount="0.0"/>
+                        <ScoreDistribution value="Yes" recordCount="5.0"/>
+                      </Node>
+                      <Node id="31" score="No" recordCount="3.0">
+                        <SimplePredicate field="thalach" operator="greaterThan" value="0.8282442748091603"/>
+                        <ScoreDistribution value="No" recordCount="3.0"/>
+                        <ScoreDistribution value="Yes" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="32" score="No" recordCount="20.0">
+                      <SimplePredicate field="age" operator="greaterThan" value="0.38541666666666663"/>
+                      <ScoreDistribution value="No" recordCount="19.0"/>
+                      <ScoreDistribution value="Yes" recordCount="1.0"/>
+                    </Node>
+                  </Node>
+                  <Node id="35" score="Yes" recordCount="3.0">
+                    <SimplePredicate field="oldpeak" operator="greaterThan" value="0.056451612903225805"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="36" score="Yes" recordCount="11.0">
+              <SimplePredicate field="thalach" operator="greaterThan" value="0.8435114503816793"/>
+              <ScoreDistribution value="No" recordCount="0.0"/>
+              <ScoreDistribution value="Yes" recordCount="11.0"/>
+            </Node>
+          </Node>
+        </Node>
+        <Node id="37" score="No" recordCount="291.0">
+          <SimplePredicate field="oldpeak" operator="greaterThan" value="0.11290322580645161"/>
+          <ScoreDistribution value="No" recordCount="259.0"/>
+          <ScoreDistribution value="Yes" recordCount="32.0"/>
+          <Node id="38" score="No" recordCount="286.0">
+            <SimplePredicate field="thalach" operator="lessOrEqual" value="0.8091603053435114"/>
+            <ScoreDistribution value="No" recordCount="259.0"/>
+            <ScoreDistribution value="Yes" recordCount="27.0"/>
+            <Node id="39" score="Yes" recordCount="8.0">
+              <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.1132075471698114"/>
+              <ScoreDistribution value="No" recordCount="2.0"/>
+              <ScoreDistribution value="Yes" recordCount="6.0"/>
+              <Node id="40" score="No" recordCount="2.0">
+                <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.1532258064516129"/>
+                <ScoreDistribution value="No" recordCount="2.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+              <Node id="41" score="Yes" recordCount="6.0">
+                <SimplePredicate field="oldpeak" operator="greaterThan" value="0.1532258064516129"/>
+                <ScoreDistribution value="No" recordCount="0.0"/>
+                <ScoreDistribution value="Yes" recordCount="6.0"/>
+              </Node>
+            </Node>
+            <Node id="42" score="No" recordCount="278.0">
+              <SimplePredicate field="trestbps" operator="greaterThan" value="0.1132075471698114"/>
+              <ScoreDistribution value="No" recordCount="257.0"/>
+              <ScoreDistribution value="Yes" recordCount="21.0"/>
+              <Node id="43" score="No" recordCount="274.0">
+                <SimplePredicate field="age" operator="lessOrEqual" value="0.8645833333333333"/>
+                <ScoreDistribution value="No" recordCount="257.0"/>
+                <ScoreDistribution value="Yes" recordCount="17.0"/>
+                <Node id="44" score="No" recordCount="86.0">
+                  <SimplePredicate field="exang" operator="lessOrEqual" value="0.5"/>
+                  <ScoreDistribution value="No" recordCount="72.0"/>
+                  <ScoreDistribution value="Yes" recordCount="14.0"/>
+                  <Node id="45" score="No" recordCount="84.0">
+                    <SimplePredicate field="thalach" operator="lessOrEqual" value="0.7595419847328243"/>
+                    <ScoreDistribution value="No" recordCount="72.0"/>
+                    <ScoreDistribution value="Yes" recordCount="12.0"/>
+                    <Node id="46" score="No" recordCount="68.0">
+                      <SimplePredicate field="chol" operator="lessOrEqual" value="0.3938356164383562"/>
+                      <ScoreDistribution value="No" recordCount="62.0"/>
+                      <ScoreDistribution value="Yes" recordCount="6.0"/>
+                      <Node id="47" score="No" recordCount="59.0">
+                        <SimplePredicate field="age" operator="lessOrEqual" value="0.7604166666666666"/>
+                        <ScoreDistribution value="No" recordCount="56.0"/>
+                        <ScoreDistribution value="Yes" recordCount="3.0"/>
+                        <Node id="48" score="No" recordCount="45.0">
+                          <SimplePredicate field="thalach" operator="lessOrEqual" value="0.6679389312977099"/>
+                          <ScoreDistribution value="No" recordCount="45.0"/>
+                          <ScoreDistribution value="Yes" recordCount="0.0"/>
+                        </Node>
+                        <Node id="49" score="No" recordCount="14.0">
+                          <SimplePredicate field="thalach" operator="greaterThan" value="0.6679389312977099"/>
+                          <ScoreDistribution value="No" recordCount="11.0"/>
+                          <ScoreDistribution value="Yes" recordCount="3.0"/>
+                          <Node id="50" score="No" recordCount="6.0">
+                            <SimplePredicate field="thalach" operator="lessOrEqual" value="0.7099236641221374"/>
+                            <ScoreDistribution value="No" recordCount="3.0"/>
+                            <ScoreDistribution value="Yes" recordCount="3.0"/>
+                            <Node id="51" score="Yes" recordCount="3.0">
+                              <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.3870967741935484"/>
+                              <ScoreDistribution value="No" recordCount="0.0"/>
+                              <ScoreDistribution value="Yes" recordCount="3.0"/>
+                            </Node>
+                            <Node id="52" score="No" recordCount="3.0">
+                              <SimplePredicate field="oldpeak" operator="greaterThan" value="0.3870967741935484"/>
+                              <ScoreDistribution value="No" recordCount="3.0"/>
+                              <ScoreDistribution value="Yes" recordCount="0.0"/>
+                            </Node>
+                          </Node>
+                          <Node id="53" score="No" recordCount="8.0">
+                            <SimplePredicate field="thalach" operator="greaterThan" value="0.7099236641221374"/>
+                            <ScoreDistribution value="No" recordCount="8.0"/>
+                            <ScoreDistribution value="Yes" recordCount="0.0"/>
+                          </Node>
+                        </Node>
+                      </Node>
+                      <Node id="54" score="No" recordCount="9.0">
+                        <SimplePredicate field="age" operator="greaterThan" value="0.7604166666666666"/>
+                        <ScoreDistribution value="No" recordCount="6.0"/>
+                        <ScoreDistribution value="Yes" recordCount="3.0"/>
+                        <Node id="55" score="Yes" recordCount="3.0">
+                          <SimplePredicate field="restecg" operator="lessOrEqual" value="0.25"/>
+                          <ScoreDistribution value="No" recordCount="0.0"/>
+                          <ScoreDistribution value="Yes" recordCount="3.0"/>
+                        </Node>
+                        <Node id="56" score="No" recordCount="6.0">
+                          <SimplePredicate field="restecg" operator="greaterThan" value="0.25"/>
+                          <ScoreDistribution value="No" recordCount="6.0"/>
+                          <ScoreDistribution value="Yes" recordCount="0.0"/>
+                        </Node>
+                      </Node>
+                    </Node>
+                    <Node id="57" score="No" recordCount="16.0">
+                      <SimplePredicate field="chol" operator="greaterThan" value="0.3938356164383562"/>
+                      <ScoreDistribution value="No" recordCount="10.0"/>
+                      <ScoreDistribution value="Yes" recordCount="6.0"/>
+                      <Node id="58" score="Yes" recordCount="6.0">
+                        <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.3548387096774194"/>
+                        <ScoreDistribution value="No" recordCount="0.0"/>
+                        <ScoreDistribution value="Yes" recordCount="6.0"/>
+                      </Node>
+                      <Node id="59" score="No" recordCount="10.0">
+                        <SimplePredicate field="oldpeak" operator="greaterThan" value="0.3548387096774194"/>
+                        <ScoreDistribution value="No" recordCount="10.0"/>
+                        <ScoreDistribution value="Yes" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node id="60" score="Yes" recordCount="2.0">
+                    <SimplePredicate field="thalach" operator="greaterThan" value="0.7595419847328243"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="2.0"/>
+                  </Node>
+                </Node>
+                <Node id="61" score="No" recordCount="188.0">
+                  <SimplePredicate field="exang" operator="greaterThan" value="0.5"/>
+                  <ScoreDistribution value="No" recordCount="185.0"/>
+                  <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  <Node id="62" score="No" recordCount="24.0">
+                    <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.1839622641509434"/>
+                    <ScoreDistribution value="No" recordCount="21.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                    <Node id="63" score="No" recordCount="7.0">
+                      <SimplePredicate field="chol" operator="lessOrEqual" value="0.2146118721461187"/>
+                      <ScoreDistribution value="No" recordCount="4.0"/>
+                      <ScoreDistribution value="Yes" recordCount="3.0"/>
+                      <Node id="64" score="Yes" recordCount="3.0">
+                        <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.282258064516129"/>
+                        <ScoreDistribution value="No" recordCount="0.0"/>
+                        <ScoreDistribution value="Yes" recordCount="3.0"/>
+                      </Node>
+                      <Node id="65" score="No" recordCount="4.0">
+                        <SimplePredicate field="oldpeak" operator="greaterThan" value="0.282258064516129"/>
+                        <ScoreDistribution value="No" recordCount="4.0"/>
+                        <ScoreDistribution value="Yes" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="66" score="No" recordCount="17.0">
+                      <SimplePredicate field="chol" operator="greaterThan" value="0.2146118721461187"/>
+                      <ScoreDistribution value="No" recordCount="17.0"/>
+                      <ScoreDistribution value="Yes" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                  <Node id="67" score="No" recordCount="164.0">
+                    <SimplePredicate field="trestbps" operator="greaterThan" value="0.1839622641509434"/>
+                    <ScoreDistribution value="No" recordCount="164.0"/>
+                    <ScoreDistribution value="Yes" recordCount="0.0"/>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="68" score="Yes" recordCount="4.0">
+                <SimplePredicate field="age" operator="greaterThan" value="0.8645833333333333"/>
+                <ScoreDistribution value="No" recordCount="0.0"/>
+                <ScoreDistribution value="Yes" recordCount="4.0"/>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="69" score="Yes" recordCount="5.0">
+            <SimplePredicate field="thalach" operator="greaterThan" value="0.8091603053435114"/>
+            <ScoreDistribution value="No" recordCount="0.0"/>
+            <ScoreDistribution value="Yes" recordCount="5.0"/>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="70" score="Yes" recordCount="478.0">
+        <SimplePredicate field="cp" operator="greaterThan" value="0.16666666666666666"/>
+        <ScoreDistribution value="No" recordCount="115.0"/>
+        <ScoreDistribution value="Yes" recordCount="363.0"/>
+        <Node id="71" score="Yes" recordCount="286.0">
+          <SimplePredicate field="age" operator="lessOrEqual" value="0.5729166666666666"/>
+          <ScoreDistribution value="No" recordCount="32.0"/>
+          <ScoreDistribution value="Yes" recordCount="254.0"/>
+          <Node id="72" score="Yes" recordCount="280.0">
+            <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.5725806451612903"/>
+            <ScoreDistribution value="No" recordCount="26.0"/>
+            <ScoreDistribution value="Yes" recordCount="254.0"/>
+            <Node id="73" score="Yes" recordCount="30.0">
+              <SimplePredicate field="thalach" operator="lessOrEqual" value="0.5458015267175572"/>
+              <ScoreDistribution value="No" recordCount="13.0"/>
+              <ScoreDistribution value="Yes" recordCount="17.0"/>
+              <Node id="74" score="Yes" recordCount="9.0">
+                <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.06451612903225806"/>
+                <ScoreDistribution value="No" recordCount="0.0"/>
+                <ScoreDistribution value="Yes" recordCount="9.0"/>
+              </Node>
+              <Node id="75" score="No" recordCount="21.0">
+                <SimplePredicate field="oldpeak" operator="greaterThan" value="0.06451612903225806"/>
+                <ScoreDistribution value="No" recordCount="13.0"/>
+                <ScoreDistribution value="Yes" recordCount="8.0"/>
+                <Node id="76" score="Yes" recordCount="5.0">
+                  <SimplePredicate field="thalach" operator="lessOrEqual" value="0.41603053435114495"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="5.0"/>
+                </Node>
+                <Node id="77" score="No" recordCount="16.0">
+                  <SimplePredicate field="thalach" operator="greaterThan" value="0.41603053435114495"/>
+                  <ScoreDistribution value="No" recordCount="13.0"/>
+                  <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  <Node id="78" score="No" recordCount="13.0">
+                    <SimplePredicate field="chol" operator="lessOrEqual" value="0.365296803652968"/>
+                    <ScoreDistribution value="No" recordCount="13.0"/>
+                    <ScoreDistribution value="Yes" recordCount="0.0"/>
+                  </Node>
+                  <Node id="79" score="Yes" recordCount="3.0">
+                    <SimplePredicate field="chol" operator="greaterThan" value="0.365296803652968"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="80" score="Yes" recordCount="250.0">
+              <SimplePredicate field="thalach" operator="greaterThan" value="0.5458015267175572"/>
+              <ScoreDistribution value="No" recordCount="13.0"/>
+              <ScoreDistribution value="Yes" recordCount="237.0"/>
+              <Node id="81" score="Yes" recordCount="247.0">
+                <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.8301886792452831"/>
+                <ScoreDistribution value="No" recordCount="10.0"/>
+                <ScoreDistribution value="Yes" recordCount="237.0"/>
+                <Node id="82" score="Yes" recordCount="39.0">
+                  <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.1603773584905661"/>
+                  <ScoreDistribution value="No" recordCount="7.0"/>
+                  <ScoreDistribution value="Yes" recordCount="32.0"/>
+                  <Node id="83" score="Yes" recordCount="23.0">
+                    <SimplePredicate field="chol" operator="lessOrEqual" value="0.2328767123287671"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="23.0"/>
+                  </Node>
+                  <Node id="84" score="Yes" recordCount="16.0">
+                    <SimplePredicate field="chol" operator="greaterThan" value="0.2328767123287671"/>
+                    <ScoreDistribution value="No" recordCount="7.0"/>
+                    <ScoreDistribution value="Yes" recordCount="9.0"/>
+                    <Node id="85" score="No" recordCount="10.0">
+                      <SimplePredicate field="chol" operator="lessOrEqual" value="0.2945205479452055"/>
+                      <ScoreDistribution value="No" recordCount="7.0"/>
+                      <ScoreDistribution value="Yes" recordCount="3.0"/>
+                      <Node id="86" score="Yes" recordCount="3.0">
+                        <SimplePredicate field="age" operator="lessOrEqual" value="0.3125"/>
+                        <ScoreDistribution value="No" recordCount="0.0"/>
+                        <ScoreDistribution value="Yes" recordCount="3.0"/>
+                      </Node>
+                      <Node id="87" score="No" recordCount="7.0">
+                        <SimplePredicate field="age" operator="greaterThan" value="0.3125"/>
+                        <ScoreDistribution value="No" recordCount="7.0"/>
+                        <ScoreDistribution value="Yes" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="88" score="Yes" recordCount="6.0">
+                      <SimplePredicate field="chol" operator="greaterThan" value="0.2945205479452055"/>
+                      <ScoreDistribution value="No" recordCount="0.0"/>
+                      <ScoreDistribution value="Yes" recordCount="6.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+                <Node id="89" score="Yes" recordCount="208.0">
+                  <SimplePredicate field="trestbps" operator="greaterThan" value="0.1603773584905661"/>
+                  <ScoreDistribution value="No" recordCount="3.0"/>
+                  <ScoreDistribution value="Yes" recordCount="205.0"/>
+                  <Node id="90" score="Yes" recordCount="177.0">
+                    <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.42452830188679247"/>
+                    <ScoreDistribution value="No" recordCount="0.0"/>
+                    <ScoreDistribution value="Yes" recordCount="177.0"/>
+                  </Node>
+                  <Node id="91" score="Yes" recordCount="31.0">
+                    <SimplePredicate field="trestbps" operator="greaterThan" value="0.42452830188679247"/>
+                    <ScoreDistribution value="No" recordCount="3.0"/>
+                    <ScoreDistribution value="Yes" recordCount="28.0"/>
+                    <Node id="92" score="Yes" recordCount="17.0">
+                      <SimplePredicate field="restecg" operator="lessOrEqual" value="0.25"/>
+                      <ScoreDistribution value="No" recordCount="0.0"/>
+                      <ScoreDistribution value="Yes" recordCount="17.0"/>
+                    </Node>
+                    <Node id="93" score="Yes" recordCount="14.0">
+                      <SimplePredicate field="restecg" operator="greaterThan" value="0.25"/>
+                      <ScoreDistribution value="No" recordCount="3.0"/>
+                      <ScoreDistribution value="Yes" recordCount="11.0"/>
+                      <Node id="94" score="No" recordCount="5.0">
+                        <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.49056603773584906"/>
+                        <ScoreDistribution value="No" recordCount="3.0"/>
+                        <ScoreDistribution value="Yes" recordCount="2.0"/>
+                        <Node id="95" score="No" recordCount="3.0">
+                          <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.16129032258064513"/>
+                          <ScoreDistribution value="No" recordCount="3.0"/>
+                          <ScoreDistribution value="Yes" recordCount="0.0"/>
+                        </Node>
+                        <Node id="96" score="Yes" recordCount="2.0">
+                          <SimplePredicate field="oldpeak" operator="greaterThan" value="0.16129032258064513"/>
+                          <ScoreDistribution value="No" recordCount="0.0"/>
+                          <ScoreDistribution value="Yes" recordCount="2.0"/>
+                        </Node>
+                      </Node>
+                      <Node id="97" score="Yes" recordCount="9.0">
+                        <SimplePredicate field="trestbps" operator="greaterThan" value="0.49056603773584906"/>
+                        <ScoreDistribution value="No" recordCount="0.0"/>
+                        <ScoreDistribution value="Yes" recordCount="9.0"/>
+                      </Node>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="98" score="No" recordCount="3.0">
+                <SimplePredicate field="trestbps" operator="greaterThan" value="0.8301886792452831"/>
+                <ScoreDistribution value="No" recordCount="3.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="99" score="No" recordCount="6.0">
+            <SimplePredicate field="oldpeak" operator="greaterThan" value="0.5725806451612903"/>
+            <ScoreDistribution value="No" recordCount="6.0"/>
+            <ScoreDistribution value="Yes" recordCount="0.0"/>
+          </Node>
+        </Node>
+        <Node id="100" score="Yes" recordCount="192.0">
+          <SimplePredicate field="age" operator="greaterThan" value="0.5729166666666666"/>
+          <ScoreDistribution value="No" recordCount="83.0"/>
+          <ScoreDistribution value="Yes" recordCount="109.0"/>
+          <Node id="101" score="Yes" recordCount="70.0">
+            <SimplePredicate field="sex" operator="lessOrEqual" value="0.5"/>
+            <ScoreDistribution value="No" recordCount="11.0"/>
+            <ScoreDistribution value="Yes" recordCount="59.0"/>
+            <Node id="102" score="Yes" recordCount="26.0">
+              <SimplePredicate field="age" operator="lessOrEqual" value="0.6979166666666666"/>
+              <ScoreDistribution value="No" recordCount="11.0"/>
+              <ScoreDistribution value="Yes" recordCount="15.0"/>
+              <Node id="103" score="No" recordCount="7.0">
+                <SimplePredicate field="cp" operator="lessOrEqual" value="0.5"/>
+                <ScoreDistribution value="No" recordCount="7.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+              <Node id="104" score="Yes" recordCount="19.0">
+                <SimplePredicate field="cp" operator="greaterThan" value="0.5"/>
+                <ScoreDistribution value="No" recordCount="4.0"/>
+                <ScoreDistribution value="Yes" recordCount="15.0"/>
+                <Node id="105" score="Yes" recordCount="15.0">
+                  <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.1774193548387097"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="15.0"/>
+                </Node>
+                <Node id="106" score="No" recordCount="4.0">
+                  <SimplePredicate field="oldpeak" operator="greaterThan" value="0.1774193548387097"/>
+                  <ScoreDistribution value="No" recordCount="4.0"/>
+                  <ScoreDistribution value="Yes" recordCount="0.0"/>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="107" score="Yes" recordCount="44.0">
+              <SimplePredicate field="age" operator="greaterThan" value="0.6979166666666666"/>
+              <ScoreDistribution value="No" recordCount="0.0"/>
+              <ScoreDistribution value="Yes" recordCount="44.0"/>
+            </Node>
+          </Node>
+          <Node id="108" score="No" recordCount="122.0">
+            <SimplePredicate field="sex" operator="greaterThan" value="0.5"/>
+            <ScoreDistribution value="No" recordCount="72.0"/>
+            <ScoreDistribution value="Yes" recordCount="50.0"/>
+            <Node id="109" score="Yes" recordCount="78.0">
+              <SimplePredicate field="chol" operator="lessOrEqual" value="0.2728310502283105"/>
+              <ScoreDistribution value="No" recordCount="33.0"/>
+              <ScoreDistribution value="Yes" recordCount="45.0"/>
+              <Node id="110" score="Yes" recordCount="64.0">
+                <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.3870967741935484"/>
+                <ScoreDistribution value="No" recordCount="19.0"/>
+                <ScoreDistribution value="Yes" recordCount="45.0"/>
+                <Node id="111" score="Yes" recordCount="51.0">
+                  <SimplePredicate field="chol" operator="lessOrEqual" value="0.24315068493150682"/>
+                  <ScoreDistribution value="No" recordCount="19.0"/>
+                  <ScoreDistribution value="Yes" recordCount="32.0"/>
+                  <Node id="112" score="Yes" recordCount="40.0">
+                    <SimplePredicate field="chol" operator="lessOrEqual" value="0.2328767123287671"/>
+                    <ScoreDistribution value="No" recordCount="11.0"/>
+                    <ScoreDistribution value="Yes" recordCount="29.0"/>
+                    <Node id="113" score="Yes" recordCount="20.0">
+                      <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.11290322580645161"/>
+                      <ScoreDistribution value="No" recordCount="0.0"/>
+                      <ScoreDistribution value="Yes" recordCount="20.0"/>
+                    </Node>
+                    <Node id="114" score="No" recordCount="20.0">
+                      <SimplePredicate field="oldpeak" operator="greaterThan" value="0.11290322580645161"/>
+                      <ScoreDistribution value="No" recordCount="11.0"/>
+                      <ScoreDistribution value="Yes" recordCount="9.0"/>
+                      <Node id="115" score="No" recordCount="7.0">
+                        <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.1935483870967742"/>
+                        <ScoreDistribution value="No" recordCount="7.0"/>
+                        <ScoreDistribution value="Yes" recordCount="0.0"/>
+                      </Node>
+                      <Node id="116" score="Yes" recordCount="13.0">
+                        <SimplePredicate field="oldpeak" operator="greaterThan" value="0.1935483870967742"/>
+                        <ScoreDistribution value="No" recordCount="4.0"/>
+                        <ScoreDistribution value="Yes" recordCount="9.0"/>
+                        <Node id="117" score="Yes" recordCount="9.0">
+                          <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.32258064516129037"/>
+                          <ScoreDistribution value="No" recordCount="0.0"/>
+                          <ScoreDistribution value="Yes" recordCount="9.0"/>
+                        </Node>
+                        <Node id="118" score="No" recordCount="4.0">
+                          <SimplePredicate field="oldpeak" operator="greaterThan" value="0.32258064516129037"/>
+                          <ScoreDistribution value="No" recordCount="4.0"/>
+                          <ScoreDistribution value="Yes" recordCount="0.0"/>
+                        </Node>
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node id="119" score="No" recordCount="11.0">
+                    <SimplePredicate field="chol" operator="greaterThan" value="0.2328767123287671"/>
+                    <ScoreDistribution value="No" recordCount="8.0"/>
+                    <ScoreDistribution value="Yes" recordCount="3.0"/>
+                    <Node id="120" score="No" recordCount="8.0">
+                      <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.1774193548387097"/>
+                      <ScoreDistribution value="No" recordCount="8.0"/>
+                      <ScoreDistribution value="Yes" recordCount="0.0"/>
+                    </Node>
+                    <Node id="121" score="Yes" recordCount="3.0">
+                      <SimplePredicate field="oldpeak" operator="greaterThan" value="0.1774193548387097"/>
+                      <ScoreDistribution value="No" recordCount="0.0"/>
+                      <ScoreDistribution value="Yes" recordCount="3.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+                <Node id="122" score="Yes" recordCount="13.0">
+                  <SimplePredicate field="chol" operator="greaterThan" value="0.24315068493150682"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="13.0"/>
+                </Node>
+              </Node>
+              <Node id="123" score="No" recordCount="14.0">
+                <SimplePredicate field="oldpeak" operator="greaterThan" value="0.3870967741935484"/>
+                <ScoreDistribution value="No" recordCount="14.0"/>
+                <ScoreDistribution value="Yes" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="124" score="No" recordCount="44.0">
+              <SimplePredicate field="chol" operator="greaterThan" value="0.2728310502283105"/>
+              <ScoreDistribution value="No" recordCount="39.0"/>
+              <ScoreDistribution value="Yes" recordCount="5.0"/>
+              <Node id="125" score="Yes" recordCount="3.0">
+                <SimplePredicate field="trestbps" operator="lessOrEqual" value="0.23584905660377364"/>
+                <ScoreDistribution value="No" recordCount="0.0"/>
+                <ScoreDistribution value="Yes" recordCount="3.0"/>
+              </Node>
+              <Node id="126" score="No" recordCount="41.0">
+                <SimplePredicate field="trestbps" operator="greaterThan" value="0.23584905660377364"/>
+                <ScoreDistribution value="No" recordCount="39.0"/>
+                <ScoreDistribution value="Yes" recordCount="2.0"/>
+                <Node id="127" score="No" recordCount="39.0">
+                  <SimplePredicate field="oldpeak" operator="lessOrEqual" value="0.5725806451612904"/>
+                  <ScoreDistribution value="No" recordCount="39.0"/>
+                  <ScoreDistribution value="Yes" recordCount="0.0"/>
+                </Node>
+                <Node id="128" score="Yes" recordCount="2.0">
+                  <SimplePredicate field="oldpeak" operator="greaterThan" value="0.5725806451612904"/>
+                  <ScoreDistribution value="No" recordCount="0.0"/>
+                  <ScoreDistribution value="Yes" recordCount="2.0"/>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
