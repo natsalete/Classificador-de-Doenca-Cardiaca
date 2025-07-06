@@ -52,6 +52,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            z-index: 10;
         }
 
         .header::before {
@@ -87,6 +88,8 @@
 
         .form-container {
             padding: 40px 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .form-grid {
@@ -611,15 +614,6 @@
 
         // Adicionar efeitos visuais extras
         document.addEventListener('DOMContentLoaded', () => {
-            // Efeito de paralaxe no header
-            const header = document.querySelector('.header');
-            
-            document.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallax = scrolled * 0.5;
-                header.style.transform = `translateY(${parallax}px)`;
-            });
-
             // Efeito de hover nos campos de input
             const inputs = document.querySelectorAll('input, select');
             inputs.forEach(input => {
