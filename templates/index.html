@@ -40,7 +40,7 @@
             border-radius: 20px;
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             position: relative;
         }
@@ -94,21 +94,32 @@
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: 1fr;
+            gap: 30px;
             margin-bottom: 30px;
         }
 
         .form-group {
             position: relative;
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .form-group:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 15px;
+            font-weight: 700;
             color: var(--text-primary);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
         }
 
         .form-group input,
@@ -120,6 +131,7 @@
             font-size: 16px;
             transition: all 0.3s ease;
             background: white;
+            margin-bottom: 15px;
         }
 
         .form-group input:focus,
@@ -129,28 +141,60 @@
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
-        .form-group input:hover,
-        .form-group select:hover {
-            border-color: var(--primary-color);
+        .explanation {
+            background: linear-gradient(135deg, #e0f2fe, #b3e5fc);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #0288d1;
+            margin-top: 10px;
+        }
+
+        .explanation h4 {
+            color: #01579b;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .explanation li {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #0d47a1;
+        }
+
+        .explanation li strong {
+            color: #01579b;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
             color: white;
-            padding: 18px 40px;
+            padding: 20px 40px;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
             position: relative;
             overflow: hidden;
+            margin-top: 20px;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
 
@@ -260,7 +304,7 @@
         .disclaimer {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 15px;
             margin-top: 30px;
             border-left: 4px solid var(--warning-color);
             position: relative;
@@ -313,9 +357,8 @@
                 padding: 30px 20px;
             }
 
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .form-group {
+                padding: 20px;
             }
 
             .disclaimer {
@@ -336,6 +379,10 @@
                 padding: 25px 15px;
             }
 
+            .form-group {
+                padding: 15px;
+            }
+
             .form-group input,
             .form-group select {
                 padding: 12px 15px;
@@ -346,7 +393,7 @@
             }
         }
 
-        /* Animações adicionais */
+        /* Animações */
         .form-group {
             animation: fadeInUp 0.6s ease-out;
             animation-fill-mode: both;
@@ -386,22 +433,35 @@
             <form id="heartForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="age">Idade (29-77 anos)</label>
+                        <label for="age">👤 Idade (29-77 anos)</label>
                         <input type="number" id="age" name="age" min="29" max="77" required 
                                placeholder="Digite sua idade">
+                        <div class="explanation">
+                            <h4>📋 Informação:</h4>
+                            <ul>
+                                <li><strong>Idade:</strong> É um fator importante para avaliar o risco cardíaco. Pessoas mais velhas têm maior probabilidade de desenvolver problemas no coração.</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="sex">Sexo</label>
+                        <label for="sex">👥 Sexo</label>
                         <select id="sex" name="sex" required>
                             <option value="">Selecione o sexo</option>
                             <option value="0">Feminino</option>
                             <option value="1">Masculino</option>
                         </select>
+                        <div class="explanation">
+                            <h4>📋 Informação:</h4>
+                            <ul>
+                                <li><strong>Feminino (0):</strong> Mulheres geralmente têm menor risco de doença cardíaca antes da menopausa.</li>
+                                <li><strong>Masculino (1):</strong> Homens têm maior risco de desenvolver problemas cardíacos em idades mais jovens.</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="cp">Tipo de dor no peito</label>
+                        <label for="cp">💔 Tipo de dor no peito</label>
                         <select id="cp" name="cp" required>
                             <option value="">Selecione o tipo de dor</option>
                             <option value="0">Angina típica</option>
@@ -409,32 +469,65 @@
                             <option value="2">Dor não-anginosa</option>
                             <option value="3">Assintomático</option>
                         </select>
+                        <div class="explanation">
+                            <h4>💡 Entenda cada tipo:</h4>
+                            <ul>
+                                <li><strong>0 – Angina típica:</strong> Dor no peito que parece um aperto e acontece quando a pessoa faz esforço. Melhora quando descansa.</li>
+                                <li><strong>1 – Angina atípica:</strong> Também dá dor no peito, mas de um jeito diferente do comum, às vezes em outras partes como costas ou braço.</li>
+                                <li><strong>2 – Dor não-anginosa:</strong> A dor no peito não tem a ver com o coração. Pode ser do músculo, estômago ou outra coisa.</li>
+                                <li><strong>3 – Assintomático:</strong> A pessoa <strong>não sente dor no peito</strong>, mesmo que possa ter algum problema no coração.</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="trestbps">Pressão arterial em repouso (94-200 mmHg)</label>
+                        <label for="trestbps">🩺 Pressão arterial em repouso (94-200 mmHg)</label>
                         <input type="number" id="trestbps" name="trestbps" min="94" max="200" required 
                                placeholder="Ex: 120">
+                        <div class="explanation">
+                            <h4>📊 Valores de referência:</h4>
+                            <ul>
+                                <li><strong>Pressão normal:</strong> Até 120 mmHg (sistólica)</li>
+                                <li><strong>Pressão elevada:</strong> 120-129 mmHg</li>
+                                <li><strong>Hipertensão estágio 1:</strong> 130-139 mmHg</li>
+                                <li><strong>Hipertensão estágio 2:</strong> 140 mmHg ou mais</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="thalach">Frequência cardíaca máxima (71-202 bpm)</label>
+                        <label for="thalach">💓 Frequência cardíaca máxima (71-202 bpm)</label>
                         <input type="number" id="thalach" name="thalach" min="71" max="202" required 
                                placeholder="Ex: 150">
+                        <div class="explanation">
+                            <h4>📈 Informação:</h4>
+                            <ul>
+                                <li><strong>Frequência cardíaca máxima:</strong> É o número máximo de batimentos por minuto que seu coração consegue atingir durante exercício intenso.</li>
+                                <li><strong>Cálculo aproximado:</strong> 220 - sua idade = frequência máxima estimada</li>
+                                <li><strong>Exemplo:</strong> Para 40 anos: 220 - 40 = 180 bpm</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="exang">Angina induzida por exercício</label>
+                        <label for="exang">🏃‍♂️ Angina induzida por exercício</label>
                         <select id="exang" name="exang" required>
                             <option value="">Selecione uma opção</option>
                             <option value="0">Não</option>
                             <option value="1">Sim</option>
                         </select>
+                        <div class="explanation">
+                            <h4>🏃‍♂️ Entenda melhor:</h4>
+                            <ul>
+                                <li><strong>✅ Sim (1):</strong> A pessoa sente dor no peito ao se exercitar ou fazer esforço físico.</li>
+                                <li><strong>❌ Não (0):</strong> A pessoa <strong>não</strong> sente dor no peito com esforço físico.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    Classificar Risco Cardíaco
+                    🔍 Classificar Risco Cardíaco
                 </button>
             </form>
             
@@ -442,7 +535,7 @@
             
             <div class="disclaimer">
                 <div class="disclaimer-content">
-                    <h3>Aviso Importante</h3>
+                    <h3>⚠️ Aviso Importante</h3>
                     <p>Este sistema é apenas uma ferramenta de apoio baseada em algoritmos de machine learning. 
                     Os resultados não substituem a avaliação médica profissional. Sempre consulte um cardiologista para um diagnóstico adequado.</p>
                 </div>
@@ -583,11 +676,11 @@
             setLoading(isLoading) {
                 if (isLoading) {
                     this.submitBtn.disabled = true;
-                    this.submitBtn.textContent = 'Processando...';
-                    this.resultDiv.innerHTML = '<div class="loading">Analisando dados médicos...</div>';
+                    this.submitBtn.textContent = '⏳ Processando...';
+                    this.resultDiv.innerHTML = '<div class="loading">🔍 Analisando dados médicos...</div>';
                 } else {
                     this.submitBtn.disabled = false;
-                    this.submitBtn.textContent = 'Classificar Risco Cardíaco';
+                    this.submitBtn.textContent = '🔍 Classificar Risco Cardíaco';
                 }
             }
 
@@ -599,7 +692,7 @@
             displayError(message) {
                 this.resultDiv.innerHTML = `
                     <div class="result error">
-                        <strong>Erro ao processar a solicitação</strong><br>
+                        <strong>❌ Erro ao processar a solicitação</strong><br>
                         ${message}<br>
                         <small>Tente novamente em alguns instantes.</small>
                     </div>
