@@ -1,8 +1,14 @@
 ﻿# 🫀 Classificador de Doença Cardíaca
-
-<img width="692" height="755" alt="Captura de tela 2025-08-13 155456" src="https://github.com/user-attachments/assets/df9c7016-90d9-45d6-887a-adacfae9a8da" />
-
+ 
 Este projeto consiste em uma **análise de dados** e **classificação de risco de doenças cardíacas** utilizando a plataforma **KNIME** e posteriormente um **sistema em Python** para prever a probabilidade de um paciente apresentar problemas cardíacos.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/df9c7016-90d9-45d6-887a-adacfae9a8da" 
+       alt="Fluxo de trabalho no KNIME" 
+       width="80%" 
+       style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+</p>
+
 
 ## 📊 Base de Dados
 A base utilizada foi o dataset ["Heart Disease Dataset"](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset) disponível no Kaggle.  
@@ -63,3 +69,4 @@ Foi desenvolvido um sistema em Python que utiliza o modelo PMML treinado para pr
 
 ## 📝 Licença
 Este projeto está licenciado sob a **MIT License** – veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
